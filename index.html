@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHERO Virtual Idols</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <!-- GLTFLoader.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <!-- OrbitControls.js (if you want interactive camera controls) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -15,8 +22,7 @@
             <img src="images/idol1.jpg" alt="Idol 1" onclick="interactWithIdol('Idol 1')">
             <div class="overlay">Interact with Shiver</div>
         </div>
-        <div class="idol">
-            <img src="images/idol2.jpg" alt="Idol 2" onclick="interactWithIdol('Idol 2')">
+        <div class="idol" id="model-container"><!-- Container for the 3D model -->
             <div class="overlay">Interact with Lefay</div>
         </div>
         <div class="idol">
@@ -24,7 +30,7 @@
             <div class="overlay">Interact with Zhao</div>
         </div>
         <div class="idol">
-            <iframe src='https://my.spline.design/cybernetichuman-e4c72ae931ec46f491e11c7015bff7db/' frameborder='0' width='100%' height='100%'></iframe>
+            <iframe src='https://my.spline.design/cybernetichuman-e4c72ae931ec46f491e11c7015bff7db/' frameborder='0'></iframe>
             <div class="overlay">Interact with Rift</div>
         </div>
     </div>
