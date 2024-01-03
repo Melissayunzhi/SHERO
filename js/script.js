@@ -20,6 +20,8 @@ modelContainer.addEventListener('mouseleave', function() {
 function init() {
   // Scene
   scene = new THREE.Scene();
+  scene.background = new THREE.Color("#052240");
+
 
   // Camera
   camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 800);
@@ -93,11 +95,27 @@ function onWindowResize() {
 
 
 function onMouseMove(event) {
-    // Only update rotation if the cursor is hovering over the container
     if (isHovering && model) {
-        let mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-        model.rotation.y = mouseX * Math.PI;
+        const mousePos = getRelativeMousePos(event);
+
+        // Map the mouse position to a rotation range
+        // Assuming you want a max rotation of Math.PI / 4 (45 degrees) in either direction
+        const maxRotation = Math.PI / 4;
+        model.rotation.y = mousePos.x * maxRotation;
     }
 }
+
+function getRelativeMousePos(event) {
+    const bounds = modelContainer.getBoundingClientRect();
+    const x = event.clientX - bounds.left - bounds.width / 2; // Mouse x relative to the container center
+    const y = event.clientY - bounds.top - bounds.height / 2; // Mouse y relative to the container center
+
+    // Normalize the coordinates to a range of -0.5 to 0.5
+    return {
+        x: x / bounds.width,
+        y: y / bounds.height
+    };
+}
+
 
 document.addEventListener('mousemove', onMouseMove, false);
