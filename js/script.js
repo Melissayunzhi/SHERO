@@ -5,6 +5,18 @@ let scene, camera, renderer, controls, model;
 init();
 animate();
 
+let isHovering = false;
+
+const modelContainer = document.getElementById('model-container');
+
+modelContainer.addEventListener('mouseenter', function() {
+    isHovering = true;
+});
+
+modelContainer.addEventListener('mouseleave', function() {
+    isHovering = false;
+});
+
 function init() {
   // Scene
   scene = new THREE.Scene();
@@ -78,3 +90,14 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
+
+
+function onMouseMove(event) {
+    // Only update rotation if the cursor is hovering over the container
+    if (isHovering && model) {
+        let mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        model.rotation.y = mouseX * Math.PI;
+    }
+}
+
+document.addEventListener('mousemove', onMouseMove, false);
