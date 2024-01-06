@@ -88,3 +88,11 @@ body, html {
         height: 50vh;
     }
 }
+
+
+
+/* Basic styling for video and canvas */
+video, canvas {
+    position: absolute;
+    transform: scaleX(-1); /* Flip the video */
+}
