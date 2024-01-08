@@ -1,66 +1,59 @@
-let video, canvas, ctx, model, predictions = [];
+import { GestureRecognizer, FilesetResolver, DrawingUtils } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
 
-async function init() {
-    video = document.getElementById('webcam');
-    canvas = document.getElementById('canvas');
-    ctx = canvas.getContext('2d');
-    video.width = 640;
-    video.height = 480;
-    canvas.width = 640;
-    canvas.height = 480;
+let gestureRecognizer;
+const videoHeight = "360px";
+const videoWidth = "480px";
 
-    // Load the Handpose model
-    model = await handpose.load();
-    console.log("Handpose model loaded");
+const createGestureRecognizer = async () => {
+  const vision = await FilesetResolver.forVisionTasks(
+    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
+  );
+  gestureRecognizer = await GestureRecognizer.createFromOptions(vision, {
+    baseOptions: {
+      modelAssetPath: "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task",
+      delegate: "GPU"
+    },
+    runningMode: "VIDEO"
+  });
+  enableCam();
+};
 
-    // Start video stream
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-            video.srcObject = stream;
-            detectHand();
-        });
-}
+const enableCam = async () => {
+  const constraints = { video: true };
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  const video = document.getElementById("webcam");
+  video.srcObject = stream;
+  video.addEventListener('loadeddata', predictWebcam);
+};
 
-async function detectHand() {
-    predictions = await model.estimateHands(video);
-    drawHand(predictions);
 
-    // Gesture recognition logic
-    if (predictions.length > 0) {
-        const GE = new fp.GestureEstimator([
-            fp.Gestures.VictoryGesture, // Add other gestures as needed
-        ]);
-        const estimatedGestures = GE.estimate(predictions[0].landmarks, 8.5);
-        if (estimatedGestures.gestures.length > 0) {
-            // Check for victory gesture
-            if (estimatedGestures.gestures[0].name === 'victory') {
-                console.log('Victory gesture detected!');
-                // Trigger video or action here
-            }
-        }
-    }
+const predictWebcam = async () => {
+    const video = document.getElementById("webcam");
+    const canvasElement = document.getElementById("output_canvas");
+    const canvasCtx = canvasElement.getContext("2d");
+    const gestureOutput = document.getElementById("gesture_output");
+  
+    const results = await gestureRecognizer.recognizeForVideo(video, Date.now());
+    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+  
+    if (results.gestures.length > 0) {
+      const categoryName = results.gestures[0][0].categoryName;
+      const categoryScore = parseFloat(results.gestures[0][0].score * 100).toFixed(2);
+  
+      gestureOutput.innerText = `Gesture: ${categoryName}, Confidence: ${categoryScore}%`;
+      gestureOutput.style.display = "block";
+  
+      if (categoryName === 'Victory') {
+        document.getElementById('victoryImage').style.display = 'block';
+      } else {
+        document.getElementById('victoryImage').style.display = 'none';
+      }
 
-    requestAnimationFrame(detectHand);
-}
-
-function drawHand(predictions) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // Draw hand keypoints and connections
-    // ...
-}
-
-init();
-function setupWebcam() {
-    if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function(stream) {
-                videoElement.srcObject = stream;
-            })
-            .catch(function(err) {
-                console.error("Error accessing the webcam: ", err);
-                // Handle the error here. For example, show an alert or a placeholder image.
-            });
+    
     } else {
-        console.error("getUserMedia not supported by this browser.");
+      gestureOutput.style.display = "none";
     }
-}
+    window.requestAnimationFrame(predictWebcam);
+  };
+  
+  createGestureRecognizer();
