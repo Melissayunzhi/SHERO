@@ -2,8 +2,14 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Roboto Condensed', sans-serif;
-    background-color: #2A2356; /* Dark blue background for the full page */
+    /* font-family: 'Roboto Condensed', sans-serif; */
+    font-family: 'Titillium Web', sans-serif;
+
+    /* background-color: #2A2356;  */
+    background-image: url("/images/background1.jpg");
+    background-size: contain; /* This will ensure the image covers the entire element */
+    /* background-repeat: no-repeat;  */
+    background-position: center; /* This positions the image at the center of the element */
 }
 
 #banner {
@@ -12,7 +18,9 @@ body, html {
     padding: 20px;
     text-align: center;
     font-size: 24px;
-    font-family: 'Orbitron', sans-serif;
+    /* font-family: 'Orbitron', sans-serif; */
+    font-family: 'Titillium Web', sans-serif;
+
 }
 
 .idol-container {
@@ -57,17 +65,26 @@ body, html {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #C252E1; /* Vibrant purple for overlay background */
-    color: #E0D9F6; /* Contrast text color */
+    background-color: #C252E1; 
+    background-image: url('/images/gradients/pinkorange.png'); /* Path to your image */
+    background-size: auto; /* This will ensure the image covers the entire button */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    color: #f2f2f2; /* Contrast text color */
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
     transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
 .overlay:hover {
     background-color: #95deff; /* Change to a lighter blue on hover */
+    background-image: url('/images/gradients/purple.png'); /* Path to your image */
+    background-size: cover; /* This will ensure the image covers the entire button */
+    color: #0d0d0d; /* Contrast text color */
+
+
 }
 
 #footer {
@@ -88,4 +105,14 @@ body, html {
         height: 50vh;
     }
 }
+
+a {
+    color: #f2f2f2; /* Replace with your desired color */
+}
+
+/* To change the color when hovering */
+a:hover {
+    color: #0d0d0d; /* Replace with the color you want on hover */
+}
+
 
