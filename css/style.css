@@ -2,62 +2,77 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    /* font-family: 'Roboto Condensed', sans-serif; */
     font-family: 'Titillium Web', sans-serif;
-
-    /* background-color: #2A2356;  */
     background-image: url("/images/background1.jpg");
-    background-size: contain; /* This will ensure the image covers the entire element */
-    /* background-repeat: no-repeat;  */
-    background-position: center; /* This positions the image at the center of the element */
+    background-size: cover; 
+    background-repeat: repeat; 
+    background-position: center; 
 }
 
 #banner {
-    background-color: #586AE2;
-    color: #E0D9F6;
-    padding: 20px;
-    text-align: center;
+    background-color: #FF80B4;
+    color: #0d0d0d;
+    padding: 15px;
+    text-align: left;
     font-size: 24px;
-    /* font-family: 'Orbitron', sans-serif; */
-    font-family: 'Titillium Web', sans-serif;
-
+    width: 100%;
+    margin: 2 auto;
+    border: 1px solid #0d0d0d;
+    background-image: url('/images/dots.svg');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-position-x: 1%;
 }
 
 .idol-container {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-template-rows: auto; /* Auto row height */
     grid-gap: 20px;
-    padding: 5vh 10vw;
+    padding: 9vh 6vw;
     justify-items: center;
     align-items: center;
 }
 
 .idol {
     position: relative;
-    background-color: #E0D9F6; /* Pale lavender background for idols */
+    background-color: #E0D9F6;
     overflow: hidden;
-    border-radius: 15px;
-    width: 80%;
-    height: 60vh;
+    width: auto;
+    height:auto; /* Adjust as necessary */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .idol img, .idol iframe {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
+    object-fit: contain; /* Change to contain */
+}
+.idol::before {
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: -1%;
+    background-image: url('/images/borders/purplepinkborder.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 1;
 }
 
+
+
 .idol:hover {
-    transform: scale(1.03); /* Slightly increase size on hover */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Increase shadow for depth */
-    border-color: #6EcbF5; /* Light blue border color on hover */
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .overlay {
@@ -66,25 +81,24 @@ body, html {
     left: 50%;
     transform: translateX(-50%);
     background-color: #C252E1; 
-    background-image: url('/images/gradients/pinkorange.png'); /* Path to your image */
-    background-size: auto; /* This will ensure the image covers the entire button */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    color: #f2f2f2; /* Contrast text color */
+    background-image: url('/images/gradients/pinkorange.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    color: #f2f2f2;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Titillium Web', sans-serif;
     font-weight: bold;
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    transition: background-color 0.3s ease;
+    border: 1px solid #0d0d0d;
+    z-index: 2;
 }
 
 .overlay:hover {
-    background-color: #95deff; /* Change to a lighter blue on hover */
-    background-image: url('/images/gradients/purple.png'); /* Path to your image */
-    background-size: cover; /* This will ensure the image covers the entire button */
-    color: #0d0d0d; /* Contrast text color */
-
-
+    background-color: #95deff;
+    background-image: url('/images/gradients/purple.png');
+    color: #0d0d0d;
 }
 
 #footer {
@@ -92,27 +106,40 @@ body, html {
     color: #E0D9F6;
     padding: 10px;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 @media (max-width: 600px) {
     .idol-container {
-        grid-template-columns: 1fr;
-        padding: 5vh 5vw;
+            grid-template-columns: 1fr; /* Single column on smaller screens */
+        }
     }
     .idol {
         width: 90%;
-        height: 50vh;
     }
-}
+
 
 a {
-    color: #f2f2f2; /* Replace with your desired color */
+    color: #f2f2f2;
+    text-decoration: none; /* Remove underline */
 }
 
-/* To change the color when hovering */
 a:hover {
-    color: #0d0d0d; /* Replace with the color you want on hover */
+    color: #0d0d0d;
 }
 
+/* Custom styling for the resize handle */
+.ui-resizable-handle {
+    background: #CCC;
+    border: 1px solid #DDD;
+    width: 10px;
+    height: 10px;
+    z-index: 2;
+}
+
+/* Positions for the resize handles */
+.ui-resizable-se { bottom: 0; right: 0; } /* Bottom right corner */
+.ui-resizable-sw { bottom: 0; left: 0; }  /* Bottom left corner */
+.ui-resizable-ne { top: 0; right: 0; }    /* Top right corner */
+.ui-resizable-nw { top: 0; left: 0; }     /* Top left corner */
 

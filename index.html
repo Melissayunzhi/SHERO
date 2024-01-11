@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHERO Virtual Idols</title>
+    <title>SHERO Official </title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Three.js -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
@@ -11,28 +11,35 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <!-- OrbitControls.js (if you want interactive camera controls) -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- jQuery UI CSS (optional but recommended for default styling) -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
 
 
 </head>
 <body>
-    <div id="banner">image/video Banner</div>
+    <div id="banner"></div>
     <div class="idol-container">
-        <div class="idol">
-            <img src="images/idol1.jpg" alt="Idol 1" onclick="interactWithIdol('Idol 1')">
+        <div class="idol" id="resizable-draggable-container">
+
+            <img src="images/shiver.JPG" alt="Shiver" onclick="interactWithIdol('Shiver')">
             <div class="overlay"><a href="Shiver.html">Interact with Shiver</a></div>
+            
         </div>
-        <div class="idol" id="model-container"><!-- Container for the 3D model -->
+        <div class="idol" id="resizable-draggable-container">
+            <img src="images/lefay.JPG" alt="lefay" onclick="interactWithIdol('Lefay')">
+
             <div class="overlay">Interact with Lefay</div>
         </div>
-        <div class="idol">
-            <iframe src='https://my.spline.design/untitled-c4e9aea61db407747399c994b9680142/' frameborder='0'></iframe>
+        <div class="idol" class="resizable-draggable-container">
+            <img src="images/zhao.JPG" alt="zhao" onclick="interactWithIdol('Zhao')">
             <div class="overlay">Interact with Zhao</div>
         </div>
-        <div class="idol">
-            <iframe src='https://my.spline.design/cybernetichuman-e4c72ae931ec46f491e11c7015bff7db/' frameborder='0'></iframe>
+        <div class="idol" id="resizable-draggable-container">
+            <img src="images/rift.JPG" alt="rift" onclick="interactWithIdol('Rift')">
             <div class="overlay">Interact with Rift</div>
         </div>
     </div>
@@ -40,5 +47,12 @@
         <div>Find us on: TikTok @shero | Instagram @shero | Red @shero</div>
     </div>
     <script src="js/script.js"></script>
+    <script>
+        $(function() {
+          // Make the container draggable and resizable
+          $('.resizable-draggable-container').resizable().draggable();
+        });
+      </script>
 </body>
+
 </html>
