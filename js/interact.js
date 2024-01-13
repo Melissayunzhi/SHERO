@@ -43,17 +43,16 @@ const predictWebcam = async () => {
       gestureOutput.innerText = `Gesture: ${categoryName}, Confidence: ${categoryScore}%`;
       gestureOutput.style.display = "block";
   
-      if (categoryName === 'Victory') {
-        document.getElementById('victoryImage').style.display = 'block';
-      } else {
-        document.getElementById('victoryImage').style.display = 'none';
-      }
-
-    
+    // Check for the 'ILoveYou' gesture instead of 'Victory'
+    if (categoryName === 'ILoveYou') {
+      document.getElementById('victoryImage').style.display = 'block'; // Consider renaming 'victoryImage' to something more generic like 'gestureImage'
     } else {
-      gestureOutput.style.display = "none";
+      document.getElementById('victoryImage').style.display = 'none';
     }
-    window.requestAnimationFrame(predictWebcam);
-  };
+  } else {
+    gestureOutput.style.display = "none";
+  }
+  window.requestAnimationFrame(predictWebcam);
+};
   
   createGestureRecognizer();
