@@ -190,15 +190,15 @@ video {
     font-size: calc(8px + 1.2vw);
   }
   
-  #victoryImage {
-    position: fixed; /* Fix the position relative to the viewport */
-    top: 50%;       /* Position at the center of the viewport vertically */
-    left: 50%;      /* Position at the center of the viewport horizontally */
-    transform: translate(30%, -50%); /* Center the image exactly */
-    width: auto;    /* Maintain the aspect ratio */
-    height: 120vh;  /* Make the image taller than the viewport height */
-    z-index: 1;     /* Ensure it's above other elements */
-    display: none;  /* Start with the image not displayed */
-  }
+
   
+  #stillImage, #animatedImage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%); /* Center the image exactly */
+    width: auto;
+    height: 120vh;
+    z-index: 1;
+  }
   
