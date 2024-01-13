@@ -48,10 +48,16 @@
     </div>
     <script src="js/script.js"></script>
     <script>
-        $(function() {
-          // Make the container draggable and resizable
-          $('.resizable-draggable-container').resizable().draggable();
-        });
+$(document).ready(function() {
+    // Apply draggable and resizable to each idol container
+    $('.idol').each(function() {
+        $(this).resizable({
+            aspectRatio: true, // Maintain aspect ratio while resizing
+            handles: 'se' // Show resize handle at the southeast corner
+        }).draggable();
+    });
+});
+
       </script>
 </body>
 

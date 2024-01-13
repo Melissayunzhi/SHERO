@@ -4,6 +4,7 @@ body, html {
     height: 100%;
     font-family: 'Roboto Condensed', sans-serif;
     /* background-color: #2A2356; */
+    overflow: hidden;
 }
 
 p, h2 {
@@ -190,7 +191,16 @@ video {
   }
   
   #victoryImage {
-    width: 200px;
-    height: 200px;
-  }
+    display: block; /* Use block layout */
+
+    margin: auto; /* This will center the image horizontally */
+    height: 100%; /* Height is fixed at 200px */
+    width: auto; /* Width will be adjusted automatically to maintain aspect ratio */
+    max-width: 100%; /* Ensures the image does not exceed the width of its container */
+    top: 0; /* Align to the top of the viewport */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for the centering */
+    z-index: 10; /* Ensure it's above other elements */
+}
+
   
