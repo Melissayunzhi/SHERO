@@ -195,7 +195,7 @@ video {
   #stillImage, #animatedImage {
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 100%;
     transform: translate(-100%, -50%); /* Center the image exactly */
     width: auto;
     height: 120vh;
