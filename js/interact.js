@@ -42,8 +42,8 @@ const predictWebcam = async () => {
       const categoryName = results.gestures[0][0].categoryName;
       const categoryScore = parseFloat(results.gestures[0][0].score * 100).toFixed(2);
 
-      gestureOutput.innerText = `Gesture: ${categoryName}, Confidence: ${categoryScore}%`;
-      gestureOutput.style.display = "block";
+      // gestureOutput.innerText = `Gesture: ${categoryName}, Confidence: ${categoryScore}%`;
+      // gestureOutput.style.display = "block";
 
       if (categoryName === 'ILoveYou') { // Change the gesture name as per your requirement
         stillImage.style.display = 'none';
