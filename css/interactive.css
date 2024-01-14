@@ -202,3 +202,44 @@ video {
     z-index: 1;
   }
   
+
+  /* Adjusted CSS for Mobile Responsiveness */
+
+@media (max-width: 600px) {
+  p, h2 {
+      font-size: calc(8px + 2vw); /* Adjusts font size based on viewport width */
+  }
+
+  .idol-container {
+      grid-template-columns: 1fr; /* Stacks idols vertically on smaller screens */
+  }
+
+  .idol {
+      width: 100%; /* Full width for smaller screens */
+      height: auto; /* Height adjusts to content */
+  }
+
+  .idol img, .idol iframe {
+      width: 100%; /* Full width of the container */
+      height: auto; /* Maintain aspect ratio */
+  }
+
+  #banner, #footer {
+      padding: 15px;
+      text-align: center;
+      font-size: calc(12px + 2vw); /* Responsive font size */
+  }
+
+  .overlay {
+      font-size: calc(8px + 2vw); /* Responsive font size */
+      padding: 5px; /* Adjust padding for smaller screens */
+  }
+
+  #stillImage, #animatedImage {
+      width: 80vw; /* Adjust width to viewport width */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the image */
+      height: auto; /* Maintain aspect ratio */
+  }
+}

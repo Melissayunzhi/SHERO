@@ -65,7 +65,7 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     opacity: 1;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 
@@ -92,7 +92,7 @@ body, html {
     font-weight: bold;
     transition: background-color 0.3s ease;
     border: 1px solid #0d0d0d;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .overlay:hover {
@@ -134,7 +134,7 @@ a:hover {
     border: 1px solid #DDD;
     width: 10px;
     height: 10px;
-    z-index: 2;
+    z-index: -2;
 }
 
 /* Positions for the resize handles */
