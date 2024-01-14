@@ -236,10 +236,12 @@ video {
   }
 
   #stillImage, #animatedImage {
-      width: 80vw; /* Adjust width to viewport width */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Center the image */
-      height: auto; /* Maintain aspect ratio */
-  }
+    position: fixed;
+    bottom: 0; /* Align at the bottom of the screen */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    width: 100%; /* Take full width of the screen */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1;
+}
 }
