@@ -10,7 +10,7 @@ body, html {
 p, h2 {
     color: #E0D9F6; /* Contrast text color */
     font-family: 'Roboto Condensed', sans-serif;
-
+    
     margin: 0;
     padding: 0;
 }
@@ -239,10 +239,10 @@ video {
   #stillImage, #animatedImage {
     position: fixed;
     bottom: 0; /* Align at the bottom of the screen */
-    left: 70%;
+    right: 10%; /* Shift to the right */
     transform: translateX(-50%); /* Center horizontally */
-    width: auto; /* Take full width of the screen */
-    height: 50vh; /* Use 50% of the viewport height */
+    width: 80%; /* Reduce width */
+    height: auto; /* Use 50% of the viewport height */
     object-fit: cover; /* Cover the area without stretching */
     z-index: 1;
 }
