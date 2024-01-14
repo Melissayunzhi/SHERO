@@ -13,7 +13,6 @@ p, h2 {
 
     margin: 0;
     padding: 0;
-    font-family: 'Roboto Condensed', sans-serif;
 }
 
 #banner {
@@ -207,7 +206,9 @@ video {
 
 @media (max-width: 600px) {
   p, h2 {
-      font-size: calc(8px + 2vw); /* Adjusts font size based on viewport width */
+    color: #473e62; /* Contrast text color */
+
+    font-size: calc(20px + 2vw); /* Adjusts font size based on viewport width */
   }
 
   .idol-container {
@@ -238,9 +239,9 @@ video {
   #stillImage, #animatedImage {
     position: fixed;
     bottom: 0; /* Align at the bottom of the screen */
-    left: 50%;
+    left: 70%;
     transform: translateX(-50%); /* Center horizontally */
-    width: 100%; /* Take full width of the screen */
+    width: auto; /* Take full width of the screen */
     height: 50vh; /* Use 50% of the viewport height */
     object-fit: cover; /* Cover the area without stretching */
     z-index: 1;
