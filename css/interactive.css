@@ -240,9 +240,10 @@ video {
     position: fixed;
     bottom: 0; /* Align at the bottom of the screen */
     right: 10%; /* Shift to the right */
-    transform: translate(-100%, -50%); /* Center the image exactly */
+    transform: translate(-50%); /* Center the image exactly */
     width: auto; /* Reduce width */
     height: 50%; /* Use 50% of the viewport height */
     z-index: 1;
 }
 }
+
