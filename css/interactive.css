@@ -239,7 +239,7 @@ video {
   #stillImage, #animatedImage {
     position: fixed;
     bottom: 0; /* Align at the bottom of the screen */
-    left: 60%; /* Center horizontally */
+    left: 50%; /* Center horizontally */
     transform: translate(-50%); /* Center the image exactly */
     width: auto; /* Reduce width */
     height: 50%; /* Use 50% of the viewport height */
